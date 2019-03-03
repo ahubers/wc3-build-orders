@@ -34,7 +34,8 @@ Looking at our MVP spec, what's the minimum amount of pages we'd need?
 - Auth pages: Login, Register, missing password, all that boring shit that should come with the framework likely.
 
 ### Wtf should we call it?
-I dunno. Something catchy, like zombocom.
+I dunno. Something catchy, like zombocom. We may coordinate with Wc3 Gym clan here and I'd be fine
+naming it with their permission as wc3gym.com. 
 
 ## Technical implementation proposal
 This is supposed to be simple and easy and limited in scope so likewise the tech stack
@@ -70,4 +71,78 @@ Please don't say Mongo. But it might be Mongo. But hopefully not Mongo.
 - Auth models, e.g., `users` (supplied by framework)
 - `Builds`
 
-What else?
+### Build shape / meta data
+Here's a simple JSON prototype with some sample data I've taken from an Orc build.
+I've stolen some of the ideas for metadata from https://lotv.spawningtool.com/build/93937/
+
+```JSON
+{
+    "meta": {
+        "votes": {
+            "up": 1,
+            "down": 1,
+            "percent": 50
+        },
+        "user": 12345,
+        "patch": "1.2.3",
+        "date_created": "ISO date format",
+        "date_modified": "ISO date here",
+        "race": "OR",
+        "matchup": "ORvsX"
+    },
+    "description": "Optional plaintext description of build here",
+    "build": [
+        {
+            "food": 6,
+            "totalFood": 10,
+            "description": "Queue Peon, Pull peon from gold, build altar of storms."
+        },
+    ]
+}
+```
+
+## Standardizations of race terminology
+I want to point out here that in our models we'll want to standardize the race / matchup terms for clarity and
+potential use as ENUMS. Here they are: 
+
+### Races
+- `HU` - Human
+- `OR` - Orc
+- `NE` - Night Elf
+- `UD` - Undead
+
+It follows there's 16 + 4 generic matchup definitions to follow.
+
+### Matchups
+
+Human:
+
+- `HUvHU` - Human vs Human
+- `HUvOR` - Human vs Orc
+- `HUvNE` - Human vs Night Elf
+- `HUvUD` - Human vs Undead
+- `HUvX` -  Human vs any race (e.g, this build can be used generically)
+
+Orc:
+
+- `ORvHU` - Orc vs Human
+- `ORvOR` - Orc vs Orc
+- `ORvNE` - Orc vs Night Elf
+- `ORvUD` - Orc vs Undead
+- `ORvX` -  Orc vs any race (e.g, this build can be used generically)
+
+Night Elf:
+
+- `NEvHU` - Night Elf vs Human
+- `NEvOR` - Night Elf vs Orc
+- `NEvNE` - Night Elf vs Night Elf
+- `NEvUD` - Night Elf vs Undead
+- `NEvX` -  Night Elf vs any race (e.g, this build can be used generically)
+
+Orc:
+
+- `UDvHU` - Undead vs Human
+- `UDvOR` - Undead vs Orc
+- `UDvNE` - Undead vs Night Elf
+- `UDvUD` - Undead vs Undead
+- `UDvX` -  Undead vs any race (e.g, this build can be used generically)
