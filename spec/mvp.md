@@ -83,6 +83,7 @@ I've stolen some of the ideas for metadata from https://lotv.spawningtool.com/bu
             "down": 1,
             "percent": 50
         },
+        "views": 100,
         "user": 12345,
         "patch": "1.2.3",
         "date_created": "ISO date format",
