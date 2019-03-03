@@ -97,6 +97,11 @@ I've stolen some of the ideas for metadata from https://lotv.spawningtool.com/bu
             "totalFood": 10,
             "description": "Queue Peon, Pull peon from gold, build altar of storms."
         },
+        {
+            "food": 7,
+            "totalFood": 10,
+            "description": "Peon pops and builds burrow."
+        },
     ]
 }
 ```
@@ -111,7 +116,7 @@ potential use as ENUMS. Here they are:
 - `NE` - Night Elf
 - `UD` - Undead
 
-It follows there's 16 + 4 generic matchup definitions to follow.
+It follows there's 16 + 4 = 20 matchup definitions to follow.
 
 ### Matchups
 
