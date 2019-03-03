@@ -64,16 +64,21 @@ Obviously MySQL is easiest but the shape of a build order is easier to model as 
 like Elasticsearch or a NoSQL option. So I would recommend MySQL for auth but a NoSQL store for build orders.
 Elasticsearch may be best so that we can order / filter quickly on build orders.
 
-The only issue is ES is not intended to be a persistent store, so we may need to explore other NoSQL options.
-Please don't say Mongo. But it might be Mongo. But hopefully not Mongo.
+https://bonsai.io/pricing It seems Bonsai offers hosted ES for free.
+
+The most straightforward solution I think is to store the build meta + build steps in MySQL then index
+them onto ES. I say that's "straightforward" because it's what I'm familiar with.
 
 ### What are our models?
 - Auth models, e.g., `users` (supplied by framework)
-- `Builds`
+- `builds` - Would contain build metadata
+- `build_steps` - Foreign key to `builds` and contains each steps as rows. 
 
 ### Build shape / meta data
 Here's a simple JSON prototype with some sample data I've taken from an Orc build.
-I've stolen some of the ideas for metadata from https://lotv.spawningtool.com/build/93937/
+I've stolen some of the ideas for metadata from https://lotv.spawningtool.com/build/93937/.
+
+You could persistently represent this in the `builds` and `build_steps` table and then index this document into ES.
 
 ```JSON
 {
