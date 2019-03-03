@@ -3,6 +3,8 @@ This build order is a combination of:
 1. [ReZZeL's Standard Grunts](https://www.youtube.com/watch?v=m6oMSE3WjaU)
 2. [WTii's Orc Build Order Guide](https://www.youtube.com/watch?v=s-S6odYyZ4E)
 
+I'm using this as an example for others of what a build order should look like.
+
 ### Standard Grunt
 - 6/10 - Alter
 - 6/10 - burrow
